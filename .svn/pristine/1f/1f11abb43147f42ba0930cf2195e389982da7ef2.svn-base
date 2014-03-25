@@ -1,0 +1,72 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace PhanTichThietKeGiaiThuat
+{
+    public partial class MainFrm : Form
+    {
+        public MainFrm()
+        {
+            InitializeComponent();
+        }
+
+        private void closetPairToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            TrucTiepVaVetCan frm = new TrucTiepVaVetCan();
+            frm.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ChiaDeTriFrm frm = new ChiaDeTriFrm();
+            frm.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            BienDoiDeTriFrm frm = new BienDoiDeTriFrm();
+            frm.Show();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            QuyHoachDongFrm frm = new QuyHoachDongFrm();
+            frm.Show();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            ThamLamFrm frm = new ThamLamFrm();
+            frm.Show();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            QuayLuiFrm frm = new QuayLuiFrm();
+            frm.Show();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            NhanhCanFrm frm = new NhanhCanFrm();
+            frm.Show();
+        }
+
+        private void chỉnhHợpChậpKCủaNSố12NToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
+}

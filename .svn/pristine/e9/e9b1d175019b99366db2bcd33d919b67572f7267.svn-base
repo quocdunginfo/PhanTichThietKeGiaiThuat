@@ -1,0 +1,147 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace PhanTichThietKeGiaiThuat
+{
+    public partial class ChiaDeTriFrm : Form
+    {
+        List<int> _input = new List<int>();
+        public ChiaDeTriFrm()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //tạo ngẫu nhiên
+            richTextBox_qd_input.Text = "";
+            Random r = new Random((int)DateTime.Now.Ticks);
+            int n;
+            if (Int32.TryParse(textBox_qd_n.Text, out n))
+            {
+                for (int i = 1; i <= n; i++)
+                {
+                    richTextBox_qd_input.Text += r.Next(100).ToString() + " ";
+                }
+            }
+        }
+
+        private void button_qd_sapxep_Click(object sender, EventArgs e)
+        {
+            this._input = qd_number.string_to_list_int(richTextBox_qd_input.Text, ' ');
+            qd_mergesort instance = new qd_mergesort();
+            instance.set_input(this._input);
+            List<int> re= instance.sort();
+            richTextBox_qd_output.Text = string.Join(" ", re);
+        }
+        
+    }
+    class qd_number
+    {
+        public static List<int> string_to_list_int(string input="", char separate = ' ')
+        {
+            List<int> re = new List<int>();
+            string[] tmp = input.Split(separate);
+            foreach (string item in tmp)
+            {
+                int k;
+                if (Int32.TryParse(item, out k))
+                {
+                    re.Add(k);
+                }
+            }
+            return re;
+        }
+    }
+    class qd_mergesort
+    {
+        private List<int> _input = new List<int>();
+        public void set_input(List<int> input)
+        {
+            this._input = input;
+        }
+        public List<int> sort()
+        {
+            int[] mang = this._input.ToArray();
+            mergeSort(mang);
+            return mang.ToList();
+        }
+            
+        // Merges the left/right elements into a sorted result.
+        // Precondition: left/right are sorted
+        private void merge(int[] result, int[] left, int[] right)
+        {
+            int i1 = 0;   // index into left array
+            int i2 = 0;   // index into right array
+
+            for (int i = 0; i < result.Length; i++)
+            {
+                if (i2 >= right.Length || (i1 < left.Length && left[i1] <= right[i2]))
+                {
+                    result[i] = left[i1];    // take from left
+                    i1++;
+                }
+                else
+                {
+                    result[i] = right[i2];   // take from right
+                    i2++;
+                }
+            }
+        }
+
+        // Rearranges the elements of a into sorted order using
+        // the merge sort algorithm (recursive).
+        private void mergeSort(int[] a)
+        {
+            if (a.Length >= 2)
+            {
+                // split array into two halves
+                int[] left = leftHalf(a);
+                int[] right = rightHalf(a);
+
+                // sort the two halves
+                mergeSort(left);
+                mergeSort(right);
+
+                // merge the sorted halves into a sorted whole
+                merge(a, left, right);
+            }
+        }
+        // Returns the first half of the given array.
+        private static int[] leftHalf(int[] a)
+        {
+            int size1 = a.Length / 2;
+            int[] left = new int[size1];
+            for (int i = 0; i < size1; ++i)
+            {
+                left[i] = a[i];
+            }
+            return left;
+        }
+
+        // Returns the second half of the given array.
+        public static int[] rightHalf(int[] a)
+        {
+            int size1 = a.Length / 2;
+            int size2 = a.Length - size1;
+            int[] right = new int[size2];
+            for (int i = 0; i < size2; ++i)
+            {
+                right[i] = a[i + size1];
+            }
+            return right;
+        }
+    }
+}

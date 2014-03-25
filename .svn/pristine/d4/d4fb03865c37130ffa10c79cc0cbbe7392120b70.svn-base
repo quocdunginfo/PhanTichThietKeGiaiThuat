@@ -1,0 +1,490 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Diagnostics;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace PhanTichThietKeGiaiThuat
+{
+    public partial class QuyHoachDongFrm : Form
+    {
+        public QuyHoachDongFrm()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
+
+        private void button_fb_tinh_Click(object sender, EventArgs e)
+        {
+            int n;
+            int time;
+            if (Int32.TryParse(textBox_fb_n.Text, out n))
+            {
+                qd_fibonacy instance = new qd_fibonacy();
+                instance.set_input(n);
+                textBox_fb_kq.Text = instance.calculate(out time).ToString();
+                textBox_fb_time.Text = time.ToString();
+            }
+        }
+        private List<int> _input = new List<int>();
+        private int _caitui = 0;
+        private Boolean read_input_ct()
+        {
+            this._input = qd_number.string_to_list_int(textBox_ct_input.Text, ' ');
+            int caitui;
+            if (!Int32.TryParse(textBox_ct_n.Text, out caitui))
+            {
+                return false;
+            }
+            this._caitui = caitui;
+            return true;
+        }
+        private void button_ct_tinh_Click(object sender, EventArgs e)
+        {
+            if(!this.read_input_ct()) return;
+            qd_caitui instance = new qd_caitui();
+            instance.set_input(this._input,this._caitui);
+            int time;
+            List<int> re = instance.calculate(out time);
+            textBox_ct_time.Text = time.ToString();
+            string output = "";
+            int sum = 0;
+            for(int i=0;i<re.Count;i++)
+            {
+                output += re[i] + " (kl=" + this._input[re[i]] + ")  ";
+                sum += this._input[re[i]];
+            }
+            textBox_ct_kq.Text = output;
+            textBox_ct_tong.Text = sum.ToString();
+        }
+
+        private void button_ct_random_Click(object sender, EventArgs e)
+        {
+            textBox_ct_input.Text= qd_number.tao_ngau_nhien(20, 40);
+            textBox_ct_n.Text = "0";
+            this.read_input_ct();
+            int max = this._input.Sum() > 100 ? 200 : this._input.Sum();
+            textBox_ct_n.Text = (max / 2).ToString();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnTinh5_Click(object sender, EventArgs e)
+        {
+
+        }
+        #region coinrow
+        private void button7_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                txtInput2.Text = qd_number.tao_ngau_nhien(int.Parse(txtNhap2.Text.ToString()), 40);
+            }
+            catch
+            {
+            }
+        }
+
+        private void btnTinh5_Click_1(object sender, EventArgs e)
+        {
+            string input = txtInput2.Text.ToString().Trim();
+            string[] inputs = input.Split(' ');
+            int n = inputs.Length;
+            int[] c = new int[n+1];
+            int[] selected_coins = new int[n+1];
+            int i=1;
+            foreach (string s in inputs)
+            {
+                if (i > n)
+                {
+                    break;
+                }
+                c[i] = int.Parse(s);
+                i++;
+            }
+            coinrow coinrow = new coinrow(c, selected_coins, n);
+            int max_value = coinrow.CoinRow();
+            txtKetQua2.Text = max_value.ToString();
+            textBox1.Text = "";
+            for (i = 0; i < n; i++)
+            {
+                if (selected_coins[i] > 0)
+                {
+                    textBox1.Text += selected_coins[i] + " ";
+                }
+            }
+        }
+        #endregion
+        //robot
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int n = int.Parse(txt_input_n.Text);
+                int m = int.Parse(txt_input_m.Text);
+                int[,] C = new int[n+1,m+1];
+                int[,] path = new int[n+1,m+1];
+                string input = txtInput3.Text.ToString().Trim();
+                string[] coordinates = input.Split(' ');
+                foreach (string s in coordinates)
+                {
+                    string[] coord = s.Split(',');
+                    C[int.Parse(coord[0]), int.Parse(coord[1])] = 1;
+                }
+                RobotCoinSelection robot = new RobotCoinSelection(C,path,n,m);
+                int max_coins = robot.CoinRow();
+                textBox4.Text = max_coins.ToString();
+                for (int i = 1; i <= n; i++)
+                {
+                    for (int j = 1; j <= m; j++)
+                    {
+                        if (path[i, j] == 1)
+                        {
+                            txtPath.Text += i + "," + j + "  ";
+                        }
+                    }
+                }
+                //MessageBox.Show(max_coins.ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string xau1 = txt_xau1.Text;
+            string xau2 = txt_xau2.Text;
+            char[] xau1_array = xau1.ToCharArray();
+            char[] xau2_array = xau2.ToCharArray();
+            int max=xau1_array.Length>xau2_array.Length?xau1_array.Length:xau2_array.Length;
+            char[] xauchung_array=new char[max];
+            xauchungdainhat tim = new xauchungdainhat(xau1_array,xau2_array,xauchung_array);
+            int max_length = tim.dodai();
+            txt_dodaixauchung.Text = max_length.ToString();
+            string xauchung_string = "";
+            for (int i = max - 1; i >= 0; i--)
+            {
+                if(xauchung_array[i]=='\0')
+                {
+                    xauchung_string+="";
+                }
+                else
+                {
+                    xauchung_string += xauchung_array[i];
+                }
+            }
+            txt_xauchung.Text = xauchung_string.ToString();
+        }
+
+
+    }
+    class qd_caitui
+    {
+        private int[] mang;
+        private int caitui;
+        private int n;
+        public void set_input(List<int> list, int caitui)
+        {
+            list.Insert(0, 0);
+            this.mang = list.ToArray();
+            this.n=list.Count-1;
+            this.caitui=caitui;
+        }
+        public List<int> calculate(out int time)
+        {
+            Stopwatch timer = new Stopwatch();
+            timer.Start();
+            List<int> re = new List<int>();
+            int[,] matran = new int[101, 101];
+            for (int t = 0; t < 100; t++)
+            {
+                matran[t, 0] = matran[0, t] = 0;
+            }
+            int i, j;
+            for (i = 1; i <= n; i++)
+            {
+                for (j = 1; j <= caitui; j++)
+                {
+                    //khoi luong lon hon cai tui
+                    if (mang[i] > j)
+                    {
+                        matran[i, j] = matran[i - 1, j];
+                    }
+                    else
+                    {
+                        matran[i, j] = max(matran[i - 1, j], mang[i] + matran[i - 1, j - mang[i]]);
+                    }
+                }
+            }
+            
+            for (i = 0; i <= n; i++)
+            {
+                for (j = 0; j < caitui; j++)
+                {
+                    Console.Write("{0,3:D}", matran[i, j]);
+                }
+                Console.WriteLine();
+            }
+            //truy vet
+            int dangxet = n;//dang xet vat thu n
+            int khoiluong_tmp = caitui;//khoi luong tam la gia trij max cua table o tren
+            while (true)
+            {
+                if (matran[dangxet, khoiluong_tmp] == 0) break;//diem dung
+                if (matran[dangxet - 1, khoiluong_tmp] == matran[dangxet, khoiluong_tmp])
+                {
+                    Console.WriteLine(matran[dangxet - 1, khoiluong_tmp] + "=" + matran[dangxet, khoiluong_tmp] + " => bo qua vat thu " + dangxet);
+                    //cap nhat lai khoi luong cua cai tui tam
+                    khoiluong_tmp = matran[dangxet, khoiluong_tmp];
+                    //bo qua vat dang xet
+                    dangxet--;
+                }
+                else
+                {
+                    Console.WriteLine(matran[dangxet, khoiluong_tmp] + "!=" + matran[dangxet - 1, khoiluong_tmp] + " => chon vat thu " + dangxet);
+                    re.Add(dangxet);
+                    //cap nhat lai khoi luong tui tam
+                    khoiluong_tmp = khoiluong_tmp - mang[dangxet];//giam khoi luong cai tui xuong do da chon vat dang xet
+                    //chon vat dang xet
+                    dangxet--;
+                }
+            }
+            //Console.ReadLine();
+            timer.Stop();
+            time = timer.Elapsed.Milliseconds;
+            return re;
+        }
+        private int max(int a, int b)
+        {
+            return a > b ? a : b;
+        }
+    }
+    class qd_fibonacy
+    {
+        private int n = 1;
+        public void set_input(int n)
+        {
+            this.n = n;
+        }
+        public long calculate(out int time)
+        {
+            Stopwatch timer = new Stopwatch();
+            timer.Start();
+            long tmp =this.Fibo_TMP(n);
+            timer.Stop();
+            time = timer.Elapsed.Milliseconds;
+            return tmp;
+        }
+        private long Fibo_TMP(int n)//khong dung mang
+        {
+            if (n < 1) return -1;
+            long so1 = 1, so2 = 1, so3;
+            if (n == 1 || n == 2) return so1;
+            int i = 3;
+            while (true)
+            {
+                so3 = so1 + so2;
+                if (i == n) return so3;
+                i++;
+                so1 = so2;
+                so2 = so3;
+            }
+        }
+    }
+    class coinrow
+    {
+        int[] coins;
+        int[] selected_coins;
+        int[] f;
+        int k = 0;
+        int n;
+        public coinrow(int[] c,int[] selected_coins,int n)
+        {
+            this.coins = c;
+            this.selected_coins = selected_coins;
+            this.n = n;
+            f = new int[n + 1];
+            k = 0;
+        }
+        public int CoinRow()
+        {
+            f[0] = 0; f[1] = coins[1];
+            for (int i = 2; i <= n; i++)
+            {
+                f[i] = Math.Max(coins[i] + f[i - 2], f[i - 1]);
+            }
+            NhatDongXu_Dequy(coins, f, n);
+            return f[n];
+        }
+
+        void NhatDongXu_Dequy(int[] c, int[] f, int n)
+        {
+            if (n <= 1)
+            {
+                selected_coins[k++] = n;
+                return;
+            }
+            if ((c[n] + f[n - 2]) > f[n - 1])
+            {
+                selected_coins[k++] = n;
+                NhatDongXu_Dequy(c, f, n - 2);
+            }
+            else
+            {
+                NhatDongXu_Dequy(c, f, n - 1);
+            }
+        }
+    }
+    class RobotCoinSelection
+    {
+        int[,] c;
+        int[,] path;
+        int[,] f;
+        int n,m;
+        public RobotCoinSelection(int[,] c, int[,] path, int n,int m)
+        {
+            this.c = c;
+            this.path = path;
+            this.n = n;
+            this.m = m;
+            f = new int[n+1,m+1];
+            path = new int[n + 1, m + 1];
+            
+        }
+        public int CoinRow()
+        {
+            f[1, 1] = c[1, 1];
+            for (int j = 2; j <= m; j++)
+            {
+                f[1, j] = f[1, j - 1] + c[1, j];
+            }
+            for (int i = 2; i <= n; i++)
+            {
+                f[i, 1] = f[i-1, 1] + c[i, 1];
+                for (int j = 2; j <= m; j++)
+                {
+                    f[i, j] = Math.Max(f[i - 1, j], f[i, j - 1]) + c[i, j];
+                }
+            }
+            path[n, m] = 1;
+            NhatDongXu_Dequy(n, m);
+            return f[n, m];
+        }
+
+        void NhatDongXu_Dequy(int n,int m)
+        {
+            if (n <= 1 || m<=1)
+            {
+                path[1, 1] = 1;
+                return;
+            }
+            if (f[n-1,m]>f[n,m-1])
+            {
+                path[n - 1, m] = 1;
+                NhatDongXu_Dequy(n - 1, m);
+            }
+            else
+            {
+                path[n, m-1] = 1;
+                NhatDongXu_Dequy(n, m - 1);
+            }
+        }
+    }
+    class xauchungdainhat
+    {
+        char[] xau1;
+        char[] xau2;
+        char[] xauchung;
+        int[,] c;
+        int[,] danhdau;
+        int n, m;
+        int dem;
+        public xauchungdainhat(char[] xau1, char[] xau2,char[] xauchung)
+        {
+            this.xau1 = xau1;
+            this.xau2 = xau2;
+            this.xauchung = xauchung;
+            n = xau1.Length;
+            m = xau2.Length;
+            c = new int[n+1, m+1];
+            danhdau = new int[n + 1, m + 1];
+            dem = 0;
+        }
+        public int dodai()
+        {
+            for (int i = 0; i <= n; i++)
+            {
+                c[i, 0] = 0;
+            }
+            for (int j = 0; j <= m; j++)
+            {
+                c[0, j] = 0;
+            }
+            for (int i = 1; i <= n; i++)
+            {
+                for (int j = 1; j <= m; j++)
+                {
+                    if (xau1[i - 1] == xau2[j - 1])
+                    {
+                        c[i, j] = c[i - 1, j - 1] + 1;
+                        danhdau[i, j] = 2;
+                    }
+                    else
+                    {
+                        if (c[i - 1, j] >= c[i, j - 1])
+                        {
+                            c[i, j] = c[i - 1, j];
+                            danhdau[i, j] = 0;
+                        }
+                        else
+                        {
+                            c[i, j] = c[i , j-1];
+                            danhdau[i, j] = 1;
+                        }
+                    }
+                }
+            }
+            timxauchung(n, m);
+            return c[n, m];
+        }
+
+        void timxauchung(int n, int m)
+        {
+            if (c[n,m]==0)
+            {
+                return;
+            }
+            if (danhdau[n,m]==2)
+            {
+                xauchung[dem++] = xau1[n-1];
+                timxauchung(n-1,m-1);
+            }
+            else
+            {
+                if (danhdau[n, m] == 0)
+                {
+                    timxauchung(n-1, m);
+                }
+                else
+                {
+                    timxauchung(n, m-1);
+                }
+            }
+        }
+    }
+    
+}

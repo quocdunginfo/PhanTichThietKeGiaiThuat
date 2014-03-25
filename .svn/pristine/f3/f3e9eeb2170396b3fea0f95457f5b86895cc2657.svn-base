@@ -1,0 +1,228 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Diagnostics;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace PhanTichThietKeGiaiThuat
+{
+    public partial class QuayLuiFrm : Form
+    {
+        public QuayLuiFrm()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
+
+        private void tabQuayLui_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        int[] queen;
+        int[] a=new int[100];
+        int[] b=new int[100];
+        int[] c=new int[100];
+        int n;
+        int dem = 0;
+        private void button2_Click(object sender, EventArgs e)
+        {
+            dem = 0;
+            txt_queen_output2.Text = "";
+            n = int.Parse(txt_input_n.Text);
+            queen = new int[n+1];
+            nqueen(1, n);
+            txt_queen_output1.Text = dem.ToString();
+        }
+
+        public void print_result()
+        {
+            for (int i = 1; i <= n; i++)
+            {
+                txt_queen_output2.Text += queen[i] + " ";
+            }
+            txt_queen_output2.Text += "\n";
+        }
+
+        public void nqueen(int i, int n)
+        {
+            for(int j=1;j<=n;j++)
+            {
+                if (a[j] == 0 && b[i + j] == 0 && c[i - j + n] == 0)
+                {
+                    queen[i] = j;
+                    a[j] = 1;
+                    b[i + j] = 1;
+                    c[i - j + n] = 1;
+
+                    if (i < n)
+                    {
+                        nqueen(i + 1, n);
+                    }
+                    else
+                    {
+                        dem++;
+                        print_result();
+                    }
+                    a[j] = 0; b[i + j] = 0; c[i - j + n] = 0;
+                }
+            }
+        }
+        #region nhị phân n bit
+        private void button_nb_tim_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int n;
+                int time;
+                if (Int32.TryParse(textBox_nb_n.Text, out n))
+                {
+                    qd_nhiphan instance = new qd_nhiphan();
+                    instance.set_input(n);
+                    string tmp = string.Join("\n", instance.calculate(out time));
+                    textBox_nb_time.Text = time.ToString();
+                    richTextBox_nb_kq.Text = tmp;
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Có lỗi về input");
+            }
+        }
+        #endregion
+        #region Chỉnh hợp
+        private void button_ch_tim_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int n;
+                int k;
+                int time;
+                if (Int32.TryParse(textBox_ch_n.Text, out n) && Int32.TryParse(textBox_ch_k.Text, out k))
+                {
+                    qd_chinhhop instance = new qd_chinhhop();
+                    instance.set_input(k, n);
+                    string tmp = string.Join("\n", instance.calculate(out time));
+                    richTextBox_ch_kq.Text = tmp;
+                    textBox_ch_time.Text = time.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Có lỗi về input");
+            }
+        }
+        #endregion
+
+        private void textBox_nb_time_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
+    class qd_chinhhop
+    {
+        private int k = 1;
+        private int n = 2;
+        public void set_input(int _k,int _n)
+        {
+            this.n = _n;
+            this.k = _k;
+        }
+        public List<string> calculate(out int time)
+        {
+            Stopwatch timer = new Stopwatch();
+            timer.Start();
+            this.b = new Boolean[n];
+            for (int i = 0; i < n; i++)
+            {
+                b[i] = true;
+            }
+            this.p = new int[k];
+            this.output = new List<string>();
+
+            lietke(0);
+            timer.Stop();
+            time = timer.Elapsed.Milliseconds;
+            return this.output;
+        }
+        private int[] p;
+        private Boolean[] b;
+        private List<string> output;
+        private void lietke(int ht)
+        {
+            for (int i = 1; i <= n; i++)
+            {
+                if (b[i-1] == true)
+                {
+                    p[ht] = i;
+                    b[i-1] = false;
+                    if (ht == k-1)
+                    {
+                        string tmp = string.Join("", p);
+                        this.output.Add(tmp);
+                    }
+                    else
+                    {
+                        lietke(ht + 1);
+                    }
+                    b[i-1] = true;
+                }
+            }
+        }
+
+    }
+    class qd_nhiphan
+    {
+        private int n=0;
+        public void set_input(int _n)
+        {
+            this.n = _n;
+        }
+        public List<string> calculate(out int time)
+        {
+            Stopwatch timer = new Stopwatch();
+            timer.Start();
+
+            this.mang = new int[n];
+            this.output = new List<string>();
+
+            lietke(0);
+            timer.Stop();
+            time = timer.Elapsed.Milliseconds;
+            return this.output;
+        }
+        private int[] mang;
+        private List<string> output;
+        private void lietke(int k)
+        {
+            for (int i = 0; i <= 1; i++)
+            {
+                mang[k] = i;
+                if (k == n - 1)
+                {
+                    string tmp = String.Join("", mang);
+                    output.Add(tmp);
+                }
+                else
+                {
+                    lietke(k + 1);
+                }
+            }
+        }
+        
+    }
+}

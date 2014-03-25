@@ -1,0 +1,178 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace PhanTichThietKeGiaiThuat
+{
+    public partial class QuyHoachDongFrm : Form
+    {
+        public QuyHoachDongFrm()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
+
+        private void button_fb_tinh_Click(object sender, EventArgs e)
+        {
+            int n;
+            if (Int32.TryParse(textBox_fb_n.Text, out n))
+            {
+                qd_fibonacy instance = new qd_fibonacy();
+                instance.set_input(n);
+                textBox_fb_kq.Text = instance.calculate().ToString();
+            }
+        }
+        private List<int> _input = new List<int>();
+        private int _caitui = 0;
+        private Boolean read_input_ct()
+        {
+            this._input = qd_number.string_to_list_int(textBox_ct_input.Text, ' ');
+            int caitui;
+            if (!Int32.TryParse(textBox_ct_n.Text, out caitui))
+            {
+                return false;
+            }
+            this._caitui = caitui;
+            return true;
+        }
+        private void button_ct_tinh_Click(object sender, EventArgs e)
+        {
+            if(!this.read_input_ct()) return;
+            qd_caitui instance = new qd_caitui();
+            instance.set_input(this._input,this._caitui);
+            List<int> re = instance.calculate();
+            string output = "";
+            int sum = 0;
+            for(int i=0;i<re.Count;i++)
+            {
+                output += re[i] + " (kl=" + this._input[re[i]] + ")  ";
+                sum += this._input[re[i]];
+            }
+            textBox_ct_kq.Text = output;
+            textBox_ct_tong.Text = sum.ToString();
+        }
+
+        private void button_ct_random_Click(object sender, EventArgs e)
+        {
+            textBox_ct_input.Text= qd_number.tao_ngau_nhien(20, 40);
+            textBox_ct_n.Text = "0";
+            this.read_input_ct();
+            int max = this._input.Sum() > 100 ? 200 : this._input.Sum();
+            textBox_ct_n.Text = (max / 2).ToString();
+        }
+    }
+    class qd_caitui
+    {
+        private int[] mang;
+        private int caitui;
+        private int n;
+        public void set_input(List<int> list, int caitui)
+        {
+            list.Insert(0, 0);
+            this.mang = list.ToArray();
+            this.n=list.Count-1;
+            this.caitui=caitui;
+        }
+        public List<int> calculate()
+        {
+            List<int> re = new List<int>();
+            int[,] matran = new int[101, 101];
+            for (int t = 0; t < 100; t++)
+            {
+                matran[t, 0] = matran[0, t] = 0;
+            }
+            int i, j;
+            for (i = 1; i <= n; i++)
+            {
+                for (j = 1; j <= caitui; j++)
+                {
+                    //khoi luong lon hon cai tui
+                    if (mang[i] > j)
+                    {
+                        matran[i, j] = matran[i - 1, j];
+                    }
+                    else
+                    {
+                        matran[i, j] = max(matran[i - 1, j], mang[i] + matran[i - 1, j - mang[i]]);
+                    }
+                }
+            }
+            
+            for (i = 0; i <= n; i++)
+            {
+                for (j = 0; j < caitui; j++)
+                {
+                    Console.Write("{0,3:D}", matran[i, j]);
+                }
+                Console.WriteLine();
+            }
+            //truy vet
+            int dangxet = n;//dang xet vat thu n
+            int khoiluong_tmp = caitui;//khoi luong tam la gia trij max cua table o tren
+            while (true)
+            {
+                if (matran[dangxet, khoiluong_tmp] == 0) break;//diem dung
+                if (matran[dangxet - 1, khoiluong_tmp] == matran[dangxet, khoiluong_tmp])
+                {
+                    Console.WriteLine(matran[dangxet - 1, khoiluong_tmp] + "=" + matran[dangxet, khoiluong_tmp] + " => bo qua vat thu " + dangxet);
+                    //cap nhat lai khoi luong cua cai tui tam
+                    khoiluong_tmp = matran[dangxet, khoiluong_tmp];
+                    //bo qua vat dang xet
+                    dangxet--;
+                }
+                else
+                {
+                    Console.WriteLine(matran[dangxet, khoiluong_tmp] + "!=" + matran[dangxet - 1, khoiluong_tmp] + " => chon vat thu " + dangxet);
+                    re.Add(dangxet);
+                    //cap nhat lai khoi luong tui tam
+                    khoiluong_tmp = khoiluong_tmp - mang[dangxet];//giam khoi luong cai tui xuong do da chon vat dang xet
+                    //chon vat dang xet
+                    dangxet--;
+                }
+            }
+            //Console.ReadLine();
+            return re;
+        }
+        private int max(int a, int b)
+        {
+            return a > b ? a : b;
+        }
+    }
+    class qd_fibonacy
+    {
+        private int n = 1;
+        public void set_input(int n)
+        {
+            this.n = n;
+        }
+        public int calculate()
+        {
+            return this.Fibo_TMP(n);
+        }
+        private int Fibo_TMP(int n)//khong dung mang
+        {
+            if (n < 1) return -1;
+            int so1 = 1, so2 = 1, so3;
+            if (n == 1 || n == 2) return so1;
+            int i = 3;
+            while (true)
+            {
+                so3 = so1 + so2;
+                if (i == n) return so3;
+                i++;
+                so1 = so2;
+                so2 = so3;
+            }
+        }
+    }
+}

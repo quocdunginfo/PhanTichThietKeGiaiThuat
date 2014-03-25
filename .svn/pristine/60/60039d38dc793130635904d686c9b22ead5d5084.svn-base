@@ -1,0 +1,85 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace PhanTichThietKeGiaiThuat
+{
+    public partial class QuayLuiFrm : Form
+    {
+        public QuayLuiFrm()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
+
+        private void tabQuayLui_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        int[] queen;
+        int[] a=new int[100];
+        int[] b=new int[100];
+        int[] c=new int[100];
+        int n;
+        int dem = 0;
+        private void button2_Click(object sender, EventArgs e)
+        {
+            dem = 0;
+            txt_queen_output2.Text = "";
+            n = int.Parse(txt_input_n.Text);
+            queen = new int[n+1];
+            nqueen(1, n);
+            txt_queen_output1.Text = dem.ToString();
+        }
+
+        public void print_result()
+        {
+            for (int i = 1; i <= n; i++)
+            {
+                txt_queen_output2.Text += queen[i] + " ";
+            }
+            txt_queen_output2.Text += "\n";
+        }
+
+        public void nqueen(int i, int n)
+        {
+            for(int j=1;j<=n;j++)
+            {
+                if (a[j] == 0 && b[i + j] == 0 && c[i - j + n] == 0)
+                {
+                    queen[i] = j;
+                    a[j] = 1;
+                    b[i + j] = 1;
+                    c[i - j + n] = 1;
+
+                    if (i < n)
+                    {
+                        nqueen(i + 1, n);
+                    }
+                    else
+                    {
+                        dem++;
+                        print_result();
+                    }
+                    a[j] = 0; b[i + j] = 0; c[i - j + n] = 0;
+                }
+            }
+        }
+    }
+}

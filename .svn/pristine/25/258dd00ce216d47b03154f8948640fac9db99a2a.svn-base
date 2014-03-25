@@ -1,0 +1,466 @@
+﻿namespace PhanTichThietKeGiaiThuat
+{
+    partial class BienDoiDeTriFrm
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BienDoiDeTriFrm));
+            this.button1 = new System.Windows.Forms.Button();
+            this.tabBienDoiDeTri = new System.Windows.Forms.TabControl();
+            this.tabTinhDuyNhat = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.tabHeapSort = new System.Windows.Forms.TabPage();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBox_qd_time = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox_qd_n = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.button_qd_sapxep = new System.Windows.Forms.Button();
+            this.button_qd_taongaunhien = new System.Windows.Forms.Button();
+            this.richTextBox_qd_output = new System.Windows.Forms.RichTextBox();
+            this.richTextBox_qd_input = new System.Windows.Forms.RichTextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.tabHorner = new System.Windows.Forms.TabPage();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
+            this.tabTongLapPhuong = new System.Windows.Forms.TabPage();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.richTextBox4 = new System.Windows.Forms.RichTextBox();
+            this.tabBCNN = new System.Windows.Forms.TabPage();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.richTextBox5 = new System.Windows.Forms.RichTextBox();
+            this.tabBienDoiDeTri.SuspendLayout();
+            this.tabTinhDuyNhat.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.tabHeapSort.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.tabHorner.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.tabTongLapPhuong.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            this.tabBCNN.SuspendLayout();
+            this.groupBox10.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(643, 445);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Thoát";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // tabBienDoiDeTri
+            // 
+            this.tabBienDoiDeTri.Controls.Add(this.tabTinhDuyNhat);
+            this.tabBienDoiDeTri.Controls.Add(this.tabHeapSort);
+            this.tabBienDoiDeTri.Controls.Add(this.tabHorner);
+            this.tabBienDoiDeTri.Controls.Add(this.tabTongLapPhuong);
+            this.tabBienDoiDeTri.Controls.Add(this.tabBCNN);
+            this.tabBienDoiDeTri.Location = new System.Drawing.Point(12, 12);
+            this.tabBienDoiDeTri.Name = "tabBienDoiDeTri";
+            this.tabBienDoiDeTri.SelectedIndex = 0;
+            this.tabBienDoiDeTri.Size = new System.Drawing.Size(706, 427);
+            this.tabBienDoiDeTri.TabIndex = 1;
+            // 
+            // tabTinhDuyNhat
+            // 
+            this.tabTinhDuyNhat.Controls.Add(this.groupBox2);
+            this.tabTinhDuyNhat.Controls.Add(this.groupBox1);
+            this.tabTinhDuyNhat.Location = new System.Drawing.Point(4, 22);
+            this.tabTinhDuyNhat.Name = "tabTinhDuyNhat";
+            this.tabTinhDuyNhat.Padding = new System.Windows.Forms.Padding(3);
+            this.tabTinhDuyNhat.Size = new System.Drawing.Size(698, 401);
+            this.tabTinhDuyNhat.TabIndex = 0;
+            this.tabTinhDuyNhat.Text = "Tính duy nhất";
+            this.tabTinhDuyNhat.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Location = new System.Drawing.Point(350, 6);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(342, 389);
+            this.groupBox2.TabIndex = 5;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Demo";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.richTextBox1);
+            this.groupBox1.Location = new System.Drawing.Point(6, 6);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(338, 389);
+            this.groupBox1.TabIndex = 4;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Đề bài";
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Enabled = false;
+            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox1.Location = new System.Drawing.Point(6, 19);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(326, 364);
+            this.richTextBox1.TabIndex = 0;
+            this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
+            // 
+            // tabHeapSort
+            // 
+            this.tabHeapSort.Controls.Add(this.groupBox3);
+            this.tabHeapSort.Controls.Add(this.groupBox4);
+            this.tabHeapSort.Location = new System.Drawing.Point(4, 22);
+            this.tabHeapSort.Name = "tabHeapSort";
+            this.tabHeapSort.Padding = new System.Windows.Forms.Padding(3);
+            this.tabHeapSort.Size = new System.Drawing.Size(698, 401);
+            this.tabHeapSort.TabIndex = 1;
+            this.tabHeapSort.Text = "HeapSort";
+            this.tabHeapSort.UseVisualStyleBackColor = true;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label4);
+            this.groupBox3.Controls.Add(this.textBox_qd_time);
+            this.groupBox3.Controls.Add(this.label3);
+            this.groupBox3.Controls.Add(this.textBox_qd_n);
+            this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.Controls.Add(this.button_qd_sapxep);
+            this.groupBox3.Controls.Add(this.button_qd_taongaunhien);
+            this.groupBox3.Controls.Add(this.richTextBox_qd_output);
+            this.groupBox3.Controls.Add(this.richTextBox_qd_input);
+            this.groupBox3.Controls.Add(this.label1);
+            this.groupBox3.Location = new System.Drawing.Point(350, 6);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(342, 389);
+            this.groupBox3.TabIndex = 7;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Demo";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(20, 334);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(55, 13);
+            this.label4.TabIndex = 16;
+            this.label4.Text = "Time (ms):";
+            // 
+            // textBox_qd_time
+            // 
+            this.textBox_qd_time.Location = new System.Drawing.Point(81, 331);
+            this.textBox_qd_time.Name = "textBox_qd_time";
+            this.textBox_qd_time.Size = new System.Drawing.Size(212, 20);
+            this.textBox_qd_time.TabIndex = 15;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(117, 23);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(45, 13);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Nhập n:";
+            // 
+            // textBox_qd_n
+            // 
+            this.textBox_qd_n.Location = new System.Drawing.Point(168, 20);
+            this.textBox_qd_n.Name = "textBox_qd_n";
+            this.textBox_qd_n.Size = new System.Drawing.Size(53, 20);
+            this.textBox_qd_n.TabIndex = 13;
+            this.textBox_qd_n.Text = "100";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(20, 177);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(55, 13);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "OUTPUT:";
+            // 
+            // button_qd_sapxep
+            // 
+            this.button_qd_sapxep.Location = new System.Drawing.Point(251, 170);
+            this.button_qd_sapxep.Name = "button_qd_sapxep";
+            this.button_qd_sapxep.Size = new System.Drawing.Size(75, 23);
+            this.button_qd_sapxep.TabIndex = 11;
+            this.button_qd_sapxep.Text = "Sắp xếp";
+            this.button_qd_sapxep.UseVisualStyleBackColor = true;
+            this.button_qd_sapxep.Click += new System.EventHandler(this.button_qd_sapxep_Click);
+            // 
+            // button_qd_taongaunhien
+            // 
+            this.button_qd_taongaunhien.Location = new System.Drawing.Point(227, 18);
+            this.button_qd_taongaunhien.Name = "button_qd_taongaunhien";
+            this.button_qd_taongaunhien.Size = new System.Drawing.Size(99, 23);
+            this.button_qd_taongaunhien.TabIndex = 10;
+            this.button_qd_taongaunhien.Text = "Tạo ngẫu nhiên";
+            this.button_qd_taongaunhien.UseVisualStyleBackColor = true;
+            this.button_qd_taongaunhien.Click += new System.EventHandler(this.button_qd_taongaunhien_Click);
+            // 
+            // richTextBox_qd_output
+            // 
+            this.richTextBox_qd_output.Location = new System.Drawing.Point(20, 201);
+            this.richTextBox_qd_output.Name = "richTextBox_qd_output";
+            this.richTextBox_qd_output.Size = new System.Drawing.Size(306, 113);
+            this.richTextBox_qd_output.TabIndex = 8;
+            this.richTextBox_qd_output.Text = "";
+            // 
+            // richTextBox_qd_input
+            // 
+            this.richTextBox_qd_input.Location = new System.Drawing.Point(20, 51);
+            this.richTextBox_qd_input.Name = "richTextBox_qd_input";
+            this.richTextBox_qd_input.Size = new System.Drawing.Size(306, 113);
+            this.richTextBox_qd_input.TabIndex = 9;
+            this.richTextBox_qd_input.Text = "";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(17, 24);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(40, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "INPUT";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.richTextBox2);
+            this.groupBox4.Location = new System.Drawing.Point(6, 6);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(338, 389);
+            this.groupBox4.TabIndex = 6;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Đề bài";
+            // 
+            // richTextBox2
+            // 
+            this.richTextBox2.Enabled = false;
+            this.richTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox2.Location = new System.Drawing.Point(6, 19);
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.Size = new System.Drawing.Size(326, 364);
+            this.richTextBox2.TabIndex = 0;
+            this.richTextBox2.Text = resources.GetString("richTextBox2.Text");
+            // 
+            // tabHorner
+            // 
+            this.tabHorner.Controls.Add(this.groupBox5);
+            this.tabHorner.Controls.Add(this.groupBox6);
+            this.tabHorner.Location = new System.Drawing.Point(4, 22);
+            this.tabHorner.Name = "tabHorner";
+            this.tabHorner.Padding = new System.Windows.Forms.Padding(3);
+            this.tabHorner.Size = new System.Drawing.Size(698, 401);
+            this.tabHorner.TabIndex = 2;
+            this.tabHorner.Text = "Horner";
+            this.tabHorner.UseVisualStyleBackColor = true;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Location = new System.Drawing.Point(350, 6);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(342, 389);
+            this.groupBox5.TabIndex = 9;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Demo";
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.richTextBox3);
+            this.groupBox6.Location = new System.Drawing.Point(6, 6);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(338, 389);
+            this.groupBox6.TabIndex = 8;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Đề bài";
+            // 
+            // richTextBox3
+            // 
+            this.richTextBox3.Enabled = false;
+            this.richTextBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox3.Location = new System.Drawing.Point(6, 19);
+            this.richTextBox3.Name = "richTextBox3";
+            this.richTextBox3.Size = new System.Drawing.Size(326, 364);
+            this.richTextBox3.TabIndex = 0;
+            this.richTextBox3.Text = resources.GetString("richTextBox3.Text");
+            // 
+            // tabTongLapPhuong
+            // 
+            this.tabTongLapPhuong.Controls.Add(this.groupBox7);
+            this.tabTongLapPhuong.Controls.Add(this.groupBox8);
+            this.tabTongLapPhuong.Location = new System.Drawing.Point(4, 22);
+            this.tabTongLapPhuong.Name = "tabTongLapPhuong";
+            this.tabTongLapPhuong.Padding = new System.Windows.Forms.Padding(3);
+            this.tabTongLapPhuong.Size = new System.Drawing.Size(698, 401);
+            this.tabTongLapPhuong.TabIndex = 3;
+            this.tabTongLapPhuong.Text = "Tổng lập phương";
+            this.tabTongLapPhuong.UseVisualStyleBackColor = true;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Location = new System.Drawing.Point(350, 6);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(342, 389);
+            this.groupBox7.TabIndex = 11;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Demo";
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.richTextBox4);
+            this.groupBox8.Location = new System.Drawing.Point(6, 6);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(338, 389);
+            this.groupBox8.TabIndex = 10;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Đề bài";
+            // 
+            // richTextBox4
+            // 
+            this.richTextBox4.Enabled = false;
+            this.richTextBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox4.Location = new System.Drawing.Point(6, 19);
+            this.richTextBox4.Name = "richTextBox4";
+            this.richTextBox4.Size = new System.Drawing.Size(326, 364);
+            this.richTextBox4.TabIndex = 0;
+            this.richTextBox4.Text = resources.GetString("richTextBox4.Text");
+            // 
+            // tabBCNN
+            // 
+            this.tabBCNN.Controls.Add(this.groupBox9);
+            this.tabBCNN.Controls.Add(this.groupBox10);
+            this.tabBCNN.Location = new System.Drawing.Point(4, 22);
+            this.tabBCNN.Name = "tabBCNN";
+            this.tabBCNN.Padding = new System.Windows.Forms.Padding(3);
+            this.tabBCNN.Size = new System.Drawing.Size(698, 401);
+            this.tabBCNN.TabIndex = 4;
+            this.tabBCNN.Text = "Bội chung nhỏ nhất";
+            this.tabBCNN.UseVisualStyleBackColor = true;
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Location = new System.Drawing.Point(350, 6);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(342, 389);
+            this.groupBox9.TabIndex = 13;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Demo";
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.richTextBox5);
+            this.groupBox10.Location = new System.Drawing.Point(6, 6);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(338, 389);
+            this.groupBox10.TabIndex = 12;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "Đề bài";
+            // 
+            // richTextBox5
+            // 
+            this.richTextBox5.Enabled = false;
+            this.richTextBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox5.Location = new System.Drawing.Point(6, 19);
+            this.richTextBox5.Name = "richTextBox5";
+            this.richTextBox5.Size = new System.Drawing.Size(326, 364);
+            this.richTextBox5.TabIndex = 0;
+            this.richTextBox5.Text = resources.GetString("richTextBox5.Text");
+            // 
+            // BienDoiDeTriFrm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(730, 480);
+            this.Controls.Add(this.tabBienDoiDeTri);
+            this.Controls.Add(this.button1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "BienDoiDeTriFrm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Biến đổi để trị";
+            this.tabBienDoiDeTri.ResumeLayout(false);
+            this.tabTinhDuyNhat.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.tabHeapSort.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.tabHorner.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.tabTongLapPhuong.ResumeLayout(false);
+            this.groupBox8.ResumeLayout(false);
+            this.tabBCNN.ResumeLayout(false);
+            this.groupBox10.ResumeLayout(false);
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TabControl tabBienDoiDeTri;
+        private System.Windows.Forms.TabPage tabTinhDuyNhat;
+        private System.Windows.Forms.TabPage tabHeapSort;
+        private System.Windows.Forms.TabPage tabHorner;
+        private System.Windows.Forms.TabPage tabTongLapPhuong;
+        private System.Windows.Forms.TabPage tabBCNN;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.RichTextBox richTextBox3;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.RichTextBox richTextBox4;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.GroupBox groupBox10;
+        private System.Windows.Forms.RichTextBox richTextBox5;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBox_qd_n;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button_qd_sapxep;
+        private System.Windows.Forms.Button button_qd_taongaunhien;
+        private System.Windows.Forms.RichTextBox richTextBox_qd_output;
+        private System.Windows.Forms.RichTextBox richTextBox_qd_input;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBox_qd_time;
+    }
+}

@@ -1,0 +1,63 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace PhanTichThietKeGiaiThuat
+{
+    public partial class QuyHoachDongFrm : Form
+    {
+        public QuyHoachDongFrm()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
+
+        private void button_fb_tinh_Click(object sender, EventArgs e)
+        {
+            int n;
+            if (Int32.TryParse(textBox_fb_n.Text, out n))
+            {
+                qd_fibonacy instance = new qd_fibonacy();
+                instance.set_input(n);
+                textBox_fb_kq.Text = instance.calculate().ToString();
+            }
+        }
+    }
+    class qd_fibonacy
+    {
+        private int n = 1;
+        public void set_input(int n)
+        {
+            this.n = n;
+        }
+        public int calculate()
+        {
+            return this.Fibo_TMP(n);
+        }
+        private int Fibo_TMP(int n)//khong dung mang
+        {
+            if (n < 1) return -1;
+            int so1 = 1, so2 = 1, so3;
+            if (n == 1 || n == 2) return so1;
+            int i = 3;
+            while (true)
+            {
+                so3 = so1 + so2;
+                if (i == n) return so3;
+                i++;
+                so1 = so2;
+                so2 = so3;
+            }
+        }
+    }
+}

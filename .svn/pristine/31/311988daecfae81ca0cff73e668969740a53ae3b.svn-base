@@ -1,0 +1,154 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace PhanTichThietKeGiaiThuat
+{
+    public partial class TrucTiepVaVetCan : Form
+    {
+        public TrucTiepVaVetCan()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
+
+        private void btnNhapLai1_Click(object sender, EventArgs e)
+        {
+            txtNhap1.ResetText();
+            txtKetQua1.ResetText();
+            txtKetQua1.Focus();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            txtKetQua2.ResetText();
+            txtNhap2.ResetText();
+            txtNhap2.Focus();
+        }
+
+        private void btnNhapLai3_Click(object sender, EventArgs e)
+        {
+            txtNhap3.ResetText();
+            txtKetQua3.ResetText();
+            txtNhap3.Focus();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            txtNhap4.ResetText();
+            txtNhap41.ResetText();
+            txtKetQua4.ResetText();
+            txtNhap4.Focus();
+        }
+
+        private void btnNhapLai5_Click(object sender, EventArgs e)
+        {
+            txtNhap5.ResetText();
+            txtKetQua5.ResetText();
+            txtNhap5.Focus();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            txtNhap6.ResetText();
+            txtKetQua6.ResetText();
+            txtNhap6.Focus();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        #region 5.ClosestFair
+        diem[] diem;
+        int n;
+       
+        private void button7_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtNhap5.Text))
+            {
+                MessageBox.Show("Vui lòng nhập n");
+                return;
+            }
+            //tạo bộ test ngẫu nhiên
+            txtInput5.Text = "";
+            n = int.Parse(txtNhap5.Text);
+            diem = new diem[n];
+            Random rand=new Random();
+            for (int i = 0; i < n; i++)
+            {
+                diem[i] = new diem(rand.Next(20),rand.Next(20));
+                txtInput5.Text += diem[i].ToString()+" ";
+            }
+        }
+        
+        private void btnTinh5_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                n = int.Parse(txtNhap5.Text);
+                diem = new diem[n];
+                string input = txtInput5.Text;
+                Console.WriteLine(input.ToString());
+                string[] coordinates = input.Split(' ');
+                Console.WriteLine(coordinates[1]);
+                int i = 0;
+                foreach (string s in coordinates)
+                {
+                    if (i >= n)
+                    {
+                        break;
+                    }
+                    string[] coord = s.Split(',');
+                    diem[i] = new diem(int.Parse(coord[0]), int.Parse(coord[1]));
+                    Console.WriteLine(diem[i].ToString());
+                    i++;
+                }
+                float d = BruteForce(diem, n);
+                txtKetQua5.Text = d.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+        
+        static public float KhoangCach(diem diem1, diem diem2)
+        {
+            return (float)Math.Sqrt((diem1.x - diem2.x) * (diem1.x - diem2.x) + (diem1.y - diem2.y) * (diem1.y - diem2.y));
+        }
+        public float BruteForce(diem[] a, int n)
+        {
+            float d = float.MaxValue;
+            for (int i = 0; i < n - 1; i++)
+            {
+                for (int j = i + 1; j < n; j++)
+                {
+                    if (KhoangCach(a[i], a[j]) < d)
+                    {
+                        d = KhoangCach(a[i], a[j]);
+                    }
+                }
+            }
+            return d;
+        }
+        #endregion
+
+       
+
+        
+
+    }
+}
